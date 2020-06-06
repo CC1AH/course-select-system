@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5"   
+    xmlns="http://java.sun.com/xml/ns/javaee"   
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   >  
+  
+  <servlet>
+    <servlet-name>SectionListServlet</servlet-name>
+    <servlet-class>servlet.SectionListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SectionListServlet</servlet-name>
+    <url-pattern>/listStudentSection</url-pattern>
+  </servlet-mapping>
+
+ <!-- studentLogin动作（位于studentLogin.html）由LoginSevlet处理 --> 
+-<servlet>
+<servlet-name>LoginServlet</servlet-name>
+<servlet-class>servlet.LoginServlet</servlet-class>
+</servlet>
+-<servlet-mapping>
+<servlet-name>LoginServlet</servlet-name>
+<url-pattern>/studentLogin</url-pattern>
+</servlet-mapping>
+
+
+<!-- adminLogin动作（位于adminLogin.html）由AdminLogin处理 --> 
+<servlet>
+<servlet-name>AdminLogin</servlet-name>
+<servlet-class>servlet.AdminLogin</servlet-class>
+</servlet>
+-<servlet-mapping>
+<servlet-name>AdminLogin</servlet-name>
+<url-pattern>/adminLogin</url-pattern>
+</servlet-mapping>
+
+
+ <!-- listStudentCourse动作（位于studentWelcome.html）接受了一个name参数 
+ 		由StudentCourseListServlet处理，该sevlet从StudentCourseDAO里获取takesList封装到response请求里面,
+ 		属性名是takesList。请求根据name不同forward到studentCourseList.jsp或者deleteStudentCourse.jsp。两个页面中都引用了请求中的takesList属性--> 
+-<servlet>
+<servlet-name>StudentCourseListServlet</servlet-name>
+<servlet-class>servlet.StudentCourseListServlet</servlet-class>
+</servlet>
+-<servlet-mapping>
+<servlet-name>StudentCourseListServlet</servlet-name>
+<url-pattern>/listStudentCourse</url-pattern>
+</servlet-mapping>
+
+
+<!-- deleteStudentCourse动作（位于deleteStudentCourse.jsp）接受了5个参数（student_id,course_id,sec_id,year,semester） 
+	 由StudentCourseDeleteServlet通过studentCourseDAO处理 从数据库的takes表中删除对应表项。之后listStudentCourse(显示剩余的课程)【请参考上上个项目】
+ 	  该页面中引用了请求中的sectionList属性-->
+-<servlet>
+<servlet-name>StudentCourseDeleteServlet</servlet-name>
+<servlet-class>servlet.StudentCourseDeleteServlet</servlet-class>
+</servlet>
+-<servlet-mapping>
+<servlet-name>StudentCourseDeleteServlet</servlet-name>
+<url-pattern>/deleteStudentCourse</url-pattern>
+</servlet-mapping>
+
+<!-- addStudentCourse动作（位于selectStudentCourse.jsp） 和delete流程一样 略了-->
+-<servlet>
+<servlet-name>StudentCourseAddServlet</servlet-name>
+<servlet-class>servlet.StudentCourseAddServlet</servlet-class>
+</servlet>
+-<servlet-mapping>
+<servlet-name>StudentCourseAddServlet</servlet-name>
+<url-pattern>/addStudentCourse</url-pattern>
+</servlet-mapping>
+
+
+<!-- teacherLogin动作（位于teacherLogin.html）由TeacherLogin处理 --> 
+<servlet>
+<servlet-name>TeacherLogin</servlet-name>
+<servlet-class>servlet.TeacherLogin</servlet-class>
+</servlet>
+-<servlet-mapping>
+<servlet-name>TeacherLogin</servlet-name>
+<url-pattern>/teacherLogin</url-pattern>
+</servlet-mapping>
+
+<!-- listSection动作（位于studentWelcome.html和teacherWelcome.html）由SectionListSevlet处理
+	传递一个student或者teacher参数... 
+	从SectionDAO获取sectionList封装到response请求里面,属性名是sectionList。请求forward到selec
+	tStudentCourse.jsp该页面中引用了请求中的sectionList属性--> 
+-<servlet>
+<servlet-name>SectionListServlet</servlet-name>
+<servlet-class>servlet.SectionListServlet</servlet-class>
+</servlet>
+-<servlet-mapping>
+<servlet-name>SectionListServlet</servlet-name>
+<url-pattern>/listSection</url-pattern>
+</servlet-mapping>
+
+ <servlet>
+    <servlet-name>SomeSectionListServlet</servlet-name>
+    <servlet-class>servlet.SomeSectionListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SomeSectionListServlet</servlet-name>
+    <url-pattern>/listSomeSection</url-pattern>
+  </servlet-mapping>
+
+<!-- listTeacherCourse动作（位于teacherWelcome.html）由TeacherCourseListServlet处理 
+	从TeacherCourseDAO获取teachesList封装到response请求里面,属性名是teachesList。请求forward到selec
+	tTeacherCourse.jsp该页面中引用了请求中的sectionList属性 -->
+-<servlet>
+<servlet-name>TeacherCourseListServlet</servlet-name>
+<servlet-class>servlet.TeacherCourseListServlet</servlet-class>
+</servlet>
+-<servlet-mapping>
+<servlet-name>TeacherCourseListServlet</servlet-name>
+<url-pattern>/listTeacherCourse</url-pattern>
+</servlet-mapping>
+
+<!-- 成绩列表 -->
+-<servlet>
+<servlet-name>ScoreListServlet</servlet-name>
+<servlet-class>servlet.ScoreListServlet</servlet-class>
+</servlet>
+-<servlet-mapping>
+<servlet-name>ScoreListServlet</servlet-name>
+<url-pattern>/scoreList</url-pattern>
+</servlet-mapping>
+
+<!-- 成绩编辑 -->
+-<servlet>
+<servlet-name>ScoreRegistrationServlet</servlet-name>
+<servlet-class>servlet.ScoreRegistrationServlet</servlet-class>
+</servlet>
+-<servlet-mapping>
+<servlet-name>ScoreRegistrationServlet</servlet-name>
+<url-pattern>/scoreRegistration</url-pattern>
+</servlet-mapping>
+
+-<filter>
+<filter-name>AuthFilter</filter-name>
+<filter-class>filter.AuthFilter</filter-class>
+</filter>
+-<filter-mapping>
+<filter-name>AuthFilter</filter-name>
+<url-pattern>/*</url-pattern>
+</filter-mapping>
+
+<!-- 何明锦 -->
+
+      <servlet>
+        <servlet-name>StudentOrTeacher</servlet-name>
+        <servlet-class>servlet.StudentOrTeacher</servlet-class>
+    </servlet>
+ 
+    <servlet-mapping>
+        <servlet-name>StudentOrTeacher</servlet-name>
+        <url-pattern>/studentOrTeacher</url-pattern>
+    </servlet-mapping>
+     <servlet>
+        <servlet-name>StudentCourseListServlet</servlet-name>
+        <servlet-class>servlet.StudentCourseListServlet</servlet-class>
+    </servlet>
+ 
+    <servlet-mapping>
+        <servlet-name>StudentCourseListServlet</servlet-name>
+        <url-pattern>/StudentCourseList</url-pattern>
+    </servlet-mapping>
+    
+ 
+    
+     <servlet>
+		<servlet-name>addCourseServlet</servlet-name>
+		<servlet-class>servlet.addCourseServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>addCourseServlet</servlet-name>
+		<url-pattern>/addCourse</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CourseListServlet</servlet-name>
+		<servlet-class>servlet.CourseListServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CourseListServlet</servlet-name>
+		<url-pattern>/CourseList</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>deleteCourseServlet</servlet-name>
+		<servlet-class>servlet.deleteCourseServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>deleteCourseServlet</servlet-name>
+		<url-pattern>/deleteCourse</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>sectionVariableServlet</servlet-name>
+		<servlet-class>servlet.sectionVariableServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>sectionVariableServlet</servlet-name>
+		<url-pattern>/sectionVariable</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>addSectionServlet</servlet-name>
+		<servlet-class>servlet.addSectionServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>addSectionServlet</servlet-name>
+		<url-pattern>/addSection</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>SectionListServlet</servlet-name>
+		<servlet-class>servlet.SectionListServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>SectionListServlet</servlet-name>
+		<url-pattern>/SectionList</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>informationCRUDServlet</servlet-name>
+		<servlet-class>servlet.informationCRUDServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>informationCRUDServlet</servlet-name>
+		<url-pattern>/informationCRUD</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>editStudentNameServlet</servlet-name>
+		<servlet-class>servlet.editStudentNameServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>editStudentNameServlet</servlet-name>
+		<url-pattern>/editStudentName</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>updateStudentItemServlet</servlet-name>
+		<servlet-class>servlet.updateStudentItemServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>updateStudentItemServlet</servlet-name>
+		<url-pattern>/updateStudentItem</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>StudentListServlet</servlet-name>
+		<servlet-class>servlet.StudentListServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>StudentListServlet</servlet-name>
+		<url-pattern>/studentList</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>editStudentDept_nameServlet</servlet-name>
+		<servlet-class>servlet.editStudentDept_nameServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>editStudentDept_nameServlet</servlet-name>
+		<url-pattern>/editStudentDept_name</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>editStudentTot_credServlet</servlet-name>
+		<servlet-class>servlet.editStudentTot_credServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>editStudentTot_credServlet</servlet-name>
+		<url-pattern>/editStudentTot_cred</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>updateAdministratorServlet</servlet-name>
+		<servlet-class>servlet.updateAdministratorServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>updateAdministratorServlet</servlet-name>
+		<url-pattern>/updateAdministrator</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>updateInstructorItemServlet</servlet-name>
+		<servlet-class>servlet.updateInstructorItemServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>updateInstructorItemServlet</servlet-name>
+		<url-pattern>/updateinstructorItem</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>editInstructorNameServlet</servlet-name>
+		<servlet-class>servlet.editInstructorNameServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>editInstructorNameServlet</servlet-name>
+		<url-pattern>/editInstructorName</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>instructorOprateServlet</servlet-name>
+		<servlet-class>servlet.instructorOprateServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>instructorOprateServlet</servlet-name>
+		<url-pattern>/instructorOprate</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>editInstructorDept_nameServlet</servlet-name>
+		<servlet-class>servlet.editInstructorDept_nameServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>editInstructorDept_nameServlet</servlet-name>
+		<url-pattern>/editInstructorDept_name</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>editInstructorSalaryServlet</servlet-name>
+		<servlet-class>servlet.editInstructorSalaryServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>editInstructorSalaryServlet</servlet-name>
+		<url-pattern>/editInstructorSalary</url-pattern>
+	</servlet-mapping>
+	
+<!--吴佩颖  -->
+  
+  <servlet>
+    <servlet-name>TeacherChange</servlet-name>
+    <servlet-class>servlet.TeacherChange</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TeacherChange</servlet-name>
+    <url-pattern>/teaChange</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>AdministratorChange</servlet-name>
+    <servlet-class>servlet.AdministratorChange</servlet-class>
+  </servlet> 
+  <servlet-mapping>
+    <servlet-name>AdministratorChange</servlet-name>
+    <url-pattern>/admChange</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>StudentChange</servlet-name>
+    <servlet-class>servlet.StudentChange</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StudentChange</servlet-name>
+    <url-pattern>/stuChange</url-pattern>
+  </servlet-mapping>
+    
+      
+  <servlet>
+    <servlet-name>StudentRegister</servlet-name>
+    <servlet-class>servlet.StudentRegister</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>StudentRegister</servlet-name>
+    <url-pattern>/stuRegister</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>TeacherRegister</servlet-name>
+    <servlet-class>servlet.TeacherRegister</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>TeacherRegister</servlet-name>
+    <url-pattern>/teaRegister</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>AdministratorRegister</servlet-name>
+    <servlet-class>servlet.AdministratorRegister</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>AdministratorRegister</servlet-name>
+    <url-pattern>/admRegister</url-pattern>
+  </servlet-mapping>
+  
+  
+</web-app>
+  
