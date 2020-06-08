@@ -36,7 +36,7 @@ public class InstructorDAO {
 	public List<InstructorItem> list(int start, int count, String teacherID) {
 		List<InstructorItem> instructorList = new ArrayList<InstructorItem>();
 
-		String sql = "select * from instructor where tID = ?";
+		String sql = "select * from instructor where teaID = ?";
 
 		try (Connection c = getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
 
@@ -91,7 +91,7 @@ public class InstructorDAO {
 	  
 	        try (Connection c = getConnection(); Statement s = c.createStatement();) {
 	  
-	            String sql = "select * from instructor where tID = " + tID;
+	            String sql = "select * from instructor where teaID = " + tID;
 	  
 	            ResultSet rs = s.executeQuery(sql);
 	  
@@ -116,7 +116,7 @@ public class InstructorDAO {
 	    }
 	   public void update(InstructorItem instructorItem) {
 		   
-	        String sql = "update instructor set name = ? , dept_name = ? , salary = ? where tID = ?";
+	        String sql = "update instructor set name = ? , dept_name = ? , salary = ? where teaID = ?";
 	        try (Connection c = getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
 	  
 	            ps.setString(1,instructorItem.name);

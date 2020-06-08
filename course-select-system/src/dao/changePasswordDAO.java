@@ -49,9 +49,9 @@ public class changePasswordDAO {
 	public void admChange(String admID,String password) {
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-	    	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/大学生选课?useSSL=false&serverTimezone=UTC","root",
-					"111");
+			Class.forName(DBInfos.DRIVER);
+	    	Connection conn = DriverManager.getConnection(DBInfos.ConNam,DBInfos.usrNam,
+					DBInfos.DbPasWrd);	
 	    	String sql = "update administrator set password=? where stuID="+admID;
 	    	//更新密码
 	    	PreparedStatement ps = conn.prepareStatement(sql);

@@ -24,8 +24,8 @@ public class SectionListServlet extends HttpServlet {
         //学生选课页面
         if ("student".equals(id)) {
         	request.getRequestDispatcher("selectStudentCourse.jsp").forward(request, response);
-        } else if ("teacher".equals(id)) {
-        //教师查看全校课程页面
+        } else{
+        //教师管理员查看全校课程页面
         	request.getRequestDispatcher("SectionList.jsp").forward(request, response);
         }
       

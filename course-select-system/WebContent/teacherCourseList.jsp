@@ -30,4 +30,4 @@
 
 
 <br><br><br>
-<div align='center'><a href="adminWelcome.html">返回主界面</a></div>
+<div align='center'><a href="teacherWelcome.html">返回主界面</a></div>

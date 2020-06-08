@@ -17,7 +17,6 @@ public class deleteCourseServlet extends HttpServlet {
             throws ServletException, IOException {
     	   String course_id = request.getParameter("course_id");
            new CourseDAO().delete(course_id);
- //        System.out.println("id:" + course_id);
         response.sendRedirect("CourseList");
 
     }

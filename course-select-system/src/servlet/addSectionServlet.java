@@ -36,7 +36,7 @@ public class addSectionServlet extends HttpServlet {
      
         new SectionDAO().add(section);
 
-        response.sendRedirect("SectionList");
+        response.sendRedirect("listSection?name=adm");
 
     }
 }

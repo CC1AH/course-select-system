@@ -24,8 +24,6 @@ public class StudentOrTeacher extends HttpServlet {
         String value = status[0];
         
         if ("student".equals(value)) {
-        //	request.getSession().setAttribute("stuID", ID);  //这是出于安全性考虑,使用session与filter结合避免出现没登录就访问的情况
-        //   response.sendRedirect("/StudentCourseList");
         	List<TakesItem> tekesList = new StudentCourseDAO().list(ID);
             request.setAttribute("tekesList", tekesList);
             request.getRequestDispatcher("StudentCourseOperate.jsp").forward(request, response);  //查看学生选课信息

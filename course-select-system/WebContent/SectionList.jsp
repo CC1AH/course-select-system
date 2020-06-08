@@ -26,4 +26,4 @@
     </c:forEach>
 </table>
 
-<div align='center'><a href="adminWelcome.html">返回主界面</a></div>
+<div align='center'><a href="LoginInChosen.html">返回登录界面</a></div>

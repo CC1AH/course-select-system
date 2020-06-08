@@ -24,7 +24,6 @@ public class AdminLogin extends HttpServlet {
     	    	  JOptionPane.showMessageDialog(null, "登陆成功！");
     	    	  request.getSession().setAttribute("admID", admID); 
         			request.getRequestDispatcher("adminWelcome.html").forward(request, response);
-        			//跳转管理员主页面，我不知道主页面名字叫啥，先写个administrator
     	      }else if(check == 2) {
     	    	  JOptionPane.showMessageDialog(null, "密码错误，请重试");
     	    	  response.sendRedirect("admLogin.jsp");
