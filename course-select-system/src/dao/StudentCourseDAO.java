@@ -9,8 +9,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import bean.DBInfos;
 import bean.TakesItem;
+import bean.DBInfos;
 
 public class StudentCourseDAO {
 
@@ -75,7 +75,7 @@ public class StudentCourseDAO {
 
 	// list函数是列出给定的学生ID所选的所有的课程
 	public List<TakesItem> list(String studentID) {
-		return list(0, 10, studentID);
+		return list(0, Integer.MAX_VALUE, studentID);
 	}
 
 	public List<TakesItem> list(int start, int count, String studentID) {
@@ -115,5 +115,97 @@ public class StudentCourseDAO {
 		}
 		return tekesList;
 	}
+	
+	// 新增一个根据学生的ID，查看他所修的总学分
+	public int listTot_creditsOfAStudnt(String studentID) {
+		String sql = "SELECT tot_cred FROM student WHERE sID = ?";
+		int totalCredits = 0; // 用来记录学生的已修总学分的变量
+		try (Connection c = getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
 
+			ps.setString(1, studentID);
+			
+
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				totalCredits = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return totalCredits;
+	}
+	
+	// 列出学生通过的课程
+	public List<TakesItem> listPassedCourse(String studentID) {
+		List<TakesItem> tekesList = new ArrayList<TakesItem>();
+
+		String sql = "select * from takes where sID = ? && grade >= 60";
+
+		try (Connection c = getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
+
+			ps.setString(1, studentID);
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				TakesItem takesItem = new TakesItem();
+				String ID = rs.getString(1);
+				String course_id = rs.getString(2);
+				String sec_id = rs.getString(3);
+				String semester = rs.getString(4);
+				int year = rs.getInt(5);
+				double grade = rs.getDouble(6);
+
+				takesItem.setID(ID);
+				takesItem.setCourse_id(course_id);
+				takesItem.setSec_id(sec_id);
+				takesItem.setSemester(semester);
+				takesItem.setYear(year);
+				takesItem.setGrade(grade);
+
+				tekesList.add(takesItem);
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		return tekesList;
+	}
+	
+	// 列出学生没通过的课程
+	public List<TakesItem> listNotPassedCourse(String studentID) {
+		List<TakesItem> tekesList = new ArrayList<TakesItem>();
+
+		String sql = "select * from takes where sID = ? && grade < 60";
+
+		try (Connection c = getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
+
+			ps.setString(1, studentID);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				TakesItem takesItem = new TakesItem();
+				String ID = rs.getString(1);
+				String course_id = rs.getString(2);
+				String sec_id = rs.getString(3);
+				String semester = rs.getString(4);
+				int year = rs.getInt(5);
+				double grade = rs.getDouble(6);
+
+				takesItem.setID(ID);
+				takesItem.setCourse_id(course_id);
+				takesItem.setSec_id(sec_id);
+				takesItem.setSemester(semester);
+				takesItem.setYear(year);
+				takesItem.setGrade(grade);
+
+				tekesList.add(takesItem);
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		return tekesList;
+	}
 }

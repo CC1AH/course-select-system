@@ -19,7 +19,7 @@ public class teaRegisterDAO {
 		Class.forName(DBInfos.DRIVER);
     	Connection conn = DriverManager.getConnection(DBInfos.ConNam,DBInfos.usrNam,
 				DBInfos.DbPasWrd);	
-    	String sql = "insert into instructor(teaID,name,dept_name,salary,password)values(?,?,?,?,?)";
+    	String sql = "insert into instructor(tID,name,dept_name,salary,password)values(?,?,?,?,?)";
     	//Ìí¼ÓÊý¾Ý
     	PreparedStatement ps = conn.prepareStatement(sql);
     	ps.setString(1,stuID);

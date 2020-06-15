@@ -17,19 +17,21 @@ public class ScoreRegistrationServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 	
-		//捕获用户非法输入
 		try{
 			double grade = Double.parseDouble(request.getParameter("grade"));
 			
-			//更新教师录入的成绩,如果返回值为true说明更新成功
-			if(new gradeDAO().updateScore(request.getParameter("stuID"),grade)){
-				JOptionPane.showMessageDialog(null, "编辑成功!"); 
-			}else
-				JOptionPane.showMessageDialog(null, "编辑失败!"); 
+			if(grade>=0&&grade<=100) {
+				//更新教师录入的成绩,如果返回值为true说明更新成功
+				if(new gradeDAO().updateScore(request.getParameter("stuID"),grade)){
+					JOptionPane.showMessageDialog(null, "编辑成功!"); 
+				}else
+					JOptionPane.showMessageDialog(null, "编辑失败!"); 
+			}else 
+				JOptionPane.showMessageDialog(null, "输入成绩不在0-100之内，请重新输入。"); 
 			
 		}catch(Exception e)
 		{
-			JOptionPane.showMessageDialog(null, "输入成绩无效!");
+			JOptionPane.showMessageDialog(null, "输入的成绩无效!");
 		}
 		
 		//获取course_id重新传给ScoreListServlet,编辑成绩成功后仍能显示刚才的学生成绩列表而不需要重新搜索（相当于刷新）

@@ -14,7 +14,7 @@ public class changePasswordDAO {
 		Class.forName(DBInfos.DRIVER);
     	Connection conn = DriverManager.getConnection(DBInfos.ConNam,DBInfos.usrNam,
 				DBInfos.DbPasWrd);	
-    	String sql = "update student set password=? where stuID="+stuID;
+    	String sql = "update student set password=? where sID="+stuID;
     	//更新密码
     	PreparedStatement ps = conn.prepareStatement(sql);
     	ps.setString(5,password);
@@ -33,7 +33,7 @@ public class changePasswordDAO {
 			 Class.forName(DBInfos.DRIVER);
 		    	Connection conn = DriverManager.getConnection(DBInfos.ConNam,DBInfos.usrNam,
 						DBInfos.DbPasWrd);
-	    	String sql = "update instructor set password=? where stuID="+teaID;
+	    	String sql = "update instructor set password=? where tID="+teaID;
 	    	//更新密码
 	    	PreparedStatement ps = conn.prepareStatement(sql);
 	    	ps.setString(5,password);
@@ -52,7 +52,7 @@ public class changePasswordDAO {
 			Class.forName(DBInfos.DRIVER);
 	    	Connection conn = DriverManager.getConnection(DBInfos.ConNam,DBInfos.usrNam,
 					DBInfos.DbPasWrd);	
-	    	String sql = "update administrator set password=? where stuID="+admID;
+	    	String sql = "update administrator set password=? where admID="+admID;
 	    	//更新密码
 	    	PreparedStatement ps = conn.prepareStatement(sql);
 	    	ps.setString(2,password);

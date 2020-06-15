@@ -31,7 +31,6 @@ public class SectionVariableDAO {
 				DBInfos.DbPasWrd);
 	}
 	public void update(boolean section_variable) {
-		  
         String sql = "update section_variable set section_variable= ?";
         try (Connection c = getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
   
@@ -43,6 +42,21 @@ public class SectionVariableDAO {
   
             e.printStackTrace();
         }
-  
     }
+	public boolean getSectionVarible() {
+		String sql = "select * from section_variable";
+        try (Connection c = getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
+        	ResultSet resultSet = ps.executeQuery(); //获取结果集
+        	while(resultSet.next())
+        		if(resultSet.getInt(1)==1)
+        			return true;
+        		else 
+        			return false;
+  
+        } catch (SQLException e) {
+  
+            e.printStackTrace();
+        }
+        return false;
+	}
 }

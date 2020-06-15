@@ -12,6 +12,15 @@
 <url-pattern>/studentLogin</url-pattern>
 </servlet-mapping>
 
+ <servlet>
+ <servlet-name>SectionListServlet</servlet-name>
+ <servlet-class>servlet.SectionListServlet</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ <servlet-name>SectionListServlet</servlet-name>
+ <url-pattern>/listStudentSection</url-pattern>
+ </servlet-mapping>
+ 
 -<servlet>
 <servlet-name>StudentCourseListServlet</servlet-name>
 <servlet-class>servlet.StudentCourseListServlet</servlet-class>
@@ -55,6 +64,24 @@
 -<servlet-mapping>
 <servlet-name>StudentCourseDeleteServlet</servlet-name>
 <url-pattern>/deleteStudentCourse</url-pattern>
+</servlet-mapping>
+
+<servlet>
+<servlet-name>StudentPassedCourseListServlet</servlet-name>
+<servlet-class>servlet.StudentPassedCourseListServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>StudentPassedCourseListServlet</servlet-name>
+<url-pattern>/listStudentPassedCourse</url-pattern>
+</servlet-mapping>
+  
+<servlet>
+<servlet-name>StudentNotPassedCourseListServlet</servlet-name>
+<servlet-class>servlet.StudentNotPassedCourseListServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>StudentNotPassedCourseListServlet</servlet-name>
+<url-pattern>/listStudentNotPassedCourse</url-pattern>
 </servlet-mapping>
 
 <!-- 黄美 定义的映射 -->
@@ -262,36 +289,6 @@
 <url-pattern>/sectionVariable</url-pattern>
 </servlet-mapping>
 
-<!-- 何明锦 定义的映射 判定冗余 待删除 -->
-<!-- 
- <servlet>
- <servlet-name>SectionListServlet</servlet-name>
- <servlet-class>servlet.SectionListServlet</servlet-class>
- </servlet>
- <servlet-mapping>
- <servlet-name>SectionListServlet</servlet-name>
- <url-pattern>/listStudentSection</url-pattern>
- </servlet-mapping>
-	<servlet>
-		<servlet-name>SectionListServlet</servlet-name>
-		<servlet-class>servlet.SectionListServlet</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>SectionListServlet</servlet-name>
-		<url-pattern>/SectionList</url-pattern>
-	</servlet-mapping>
-
-  </servlet-mapping>
-   <servlet>
-        <servlet-name>StudentCourseListServlet</servlet-name>
-        <servlet-class>servlet.StudentCourseListServlet</servlet-class>
-    </servlet>
- 
-    <servlet-mapping>
-        <servlet-name>StudentCourseListServlet</servlet-name>
-        <url-pattern>/StudentCourseList</url-pattern>
-    </servlet-mapping>-->	
 <!--吴沛颖 定义的映射 -->
 <servlet>
 <servlet-name>TeacherChange</servlet-name>

@@ -123,12 +123,18 @@ public class gradeDAO{
 	
 	//功能：更新教师录入的成绩
 	public boolean updateScore(String stu_id, double grade) {
-		
 		String sql="update takes set grade = ? "+" where sID = ?";
 		try (Connection c = getConnection(); PreparedStatement ps = c.prepareStatement(sql);)
 
 		{
-			ps.setDouble(1, grade);
+			/*************修改部分****************/
+			//如果更新成绩低于60，更新数据库为59
+			if(grade<60)
+				ps.setDouble(1, 59);
+			else
+				ps.setDouble(1, grade);
+			/*************修改部分****************/
+			
 			ps.setString(2, stu_id);
 			
 			int row = ps.executeUpdate(); //若返回的更新行数为1，说明修改成绩成功

@@ -35,7 +35,7 @@ public class StudentDAO {
 	public List<StudentItem> list(int start, int count, String studentID) {
 		List<StudentItem> studentList = new ArrayList<StudentItem>();
 
-		String sql = "select * from student where stuID = ?";
+		String sql = "select * from student where sID = ?";
 
 		try (Connection c = getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
 

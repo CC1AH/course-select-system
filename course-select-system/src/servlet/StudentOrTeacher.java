@@ -20,10 +20,9 @@ public class StudentOrTeacher extends HttpServlet {
             throws ServletException, IOException {
  
         String ID = (String)request.getParameter("ID");
-        String[] status = request.getParameterValues("status");
-        String value = status[0];
+        String status = request.getParameter("status");
         
-        if ("student".equals(value)) {
+        if ("student".equals(status)) {
         	List<TakesItem> tekesList = new StudentCourseDAO().list(ID);
             request.setAttribute("tekesList", tekesList);
             request.getRequestDispatcher("StudentCourseOperate.jsp").forward(request, response);  //查看学生选课信息
