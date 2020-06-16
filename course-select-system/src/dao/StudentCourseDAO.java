@@ -33,7 +33,7 @@ public class StudentCourseDAO {
 	// 根据学生的ID和他选课的course_id,sec_id,semester,year增加他的课表，即选课
 	public void add(String stu_id, String course_id, String sec_id, String semester, int year) {
 
-		String sql = "insert into takes values(?,?,?,?,?,NULL)";
+		String sql = "insert into takes values(?,?,?,?,?,0)";
 		try (Connection c = getConnection(); PreparedStatement ps = c.prepareStatement(sql);)
 
 		{

@@ -19,17 +19,19 @@ public class StudentOrTeacher extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
  
+
         String ID = (String)request.getParameter("ID");
-        String status = request.getParameter("status");
+        String[] status = request.getParameterValues("status");
+        String value = status[0];
         
-        if ("student".equals(status)) {
+        if ("student".equals(value)) {
         	List<TakesItem> tekesList = new StudentCourseDAO().list(ID);
             request.setAttribute("tekesList", tekesList);
             request.getRequestDispatcher("StudentCourseOperate.jsp").forward(request, response);  //查看学生选课信息
         } else {
         	List<TeachesItem> teachesList = new TeacherCourseDAO().list(ID);
             request.setAttribute("teachesList", teachesList);
-            request.getRequestDispatcher("TeacherCourseList.jsp").forward(request, response);  //查看学生教师信息
+            request.getRequestDispatcher("teacherCourseList.jsp").forward(request, response);  //查看学生教师信息
         }
  		
     }

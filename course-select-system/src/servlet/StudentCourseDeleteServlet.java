@@ -29,7 +29,7 @@ public class StudentCourseDeleteServlet extends HttpServlet {
     			request.getParameter("course_id"), request.getParameter("sec_id"), 
     			request.getParameter("semester"), 
     			Integer.parseInt(request.getParameter("year")));
-//    	JOptionPane.showMessageDialog(null, "成功退课"); 
+    	JOptionPane.showMessageDialog(null, "成功退课"); 
         request.getRequestDispatcher("listStudentCourse?name=delete").forward(request, response);
     }
 }

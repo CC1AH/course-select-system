@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v12.09 (64 bit)
-MySQL - 8.0.19 : Database - 大学生选课
+MySQL - 8.0.19 : Database - course_select_system
 *********************************************************************
 */
 
@@ -12,9 +12,9 @@ MySQL - 8.0.19 : Database - 大学生选课
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`大学生选课` /*!40100 DEFAULT CHARACTER SET gbk */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`course_select_system` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
-USE `大学生选课`;
+USE `course_select_system`;
 
 /*Table structure for table `administrator` */
 
@@ -61,7 +61,7 @@ CREATE TABLE `course` (
 
 /*Data for the table `course` */
 
-insert  into `course`(`course_id`,`title`,`dept_name`,`credits`) values ('BI-356','Life Sciences','Biology',3),('CS-315','Database Concepts','Comp.Sci.',3),('CS-316','testCourse','Comp.Sci.',3),('CS-317','testCourse','Comp.Sci.',3),('CS-318','testCourse','Comp.Sci.',3),('CS-319','testCourse','Comp.Sci.',3),('CS-321','testCourse','Comp.Sci.',3),('CS-347','Network','Comp.Sci.',4),('FIN-201','Introdution to Finan','Finance',2),('HI-101','Western History','History',3),('MU-199','Music history','Music',2),('PHY-101','Genery physics','Physics',3);
+insert  into `course`(`course_id`,`title`,`dept_name`,`credits`) values ('BI-356','Life Sciences','Biology',3),('CS-315','Database Concepts','Comp.Sci.',3),('CS-316','testCourse','Comp.Sci.',3),('CS-319','testCourse','Comp.Sci.',3),('CS-321','testCourse','Comp.Sci.',3),('CS-347','Network','Comp.Sci.',4),('FIN-201','Introdution to Finan','Finance',2),('HI-101','Western History','History',3),('MU-199','Music history','Music',2),('PHY-101','Genery physics','Physics',3),('TEST','TESTTITLE','Biology',3),('testid','testtitle','Biology',4);
 
 /*Table structure for table `department` */
 
@@ -83,19 +83,19 @@ insert  into `department`(`dept_name`,`building`,`budget`) values ('Biology','Wa
 DROP TABLE IF EXISTS `instructor`;
 
 CREATE TABLE `instructor` (
-  `teaID` varchar(5) NOT NULL,
+  `tID` varchar(5) NOT NULL,
   `name` varchar(20) NOT NULL,
   `dept_name` varchar(50) NOT NULL,
   `salary` decimal(8,2) DEFAULT NULL,
   `password` varchar(5) DEFAULT NULL,
-  PRIMARY KEY (`teaID`),
+  PRIMARY KEY (`tID`),
   KEY `dept_name` (`dept_name`),
   CONSTRAINT `instructor_ibfk_1` FOREIGN KEY (`dept_name`) REFERENCES `department` (`dept_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `instructor` */
 
-insert  into `instructor`(`teaID`,`name`,`dept_name`,`salary`,`password`) values ('10101','Srinivasan','Comp.Sci.','65000.00','111'),('12121','Wu','Finance','90000.00','111'),('15151','Mozart','Music','40000.00','111'),('22223','Kris','Comp.Sci.','64000.00','111'),('45565','Kats','Comp.Sci.','75000.00','111'),('58583','Califieri','History','62000.00','111'),('76543','Singh','Finance','80000.00','111'),('83821','Brandt','Biology','92000.00','111');
+insert  into `instructor`(`tID`,`name`,`dept_name`,`salary`,`password`) values ('10101','Srinivasan','Comp.Sci.','90000.00','111'),('11111','testName','Biology','70000.00','111'),('12121','Wu','Finance','90000.00','111'),('15151','Mozart','Music','40000.00','111'),('22223','Kris','Comp.Sci.','64000.00','111'),('45565','Kats','Comp.Sci.','75000.00','111'),('58583','Califieri','History','62000.00','111'),('76543','Singh','Finance','80000.00','111'),('83821','Brandt','Biology','93000.00','111'),('91544','Ben','Music','50000.00','111');
 
 /*Table structure for table `section` */
 
@@ -117,7 +117,7 @@ CREATE TABLE `section` (
 
 /*Data for the table `section` */
 
-insert  into `section`(`course_id`,`sec_id`,`semester`,`year`,`building`,`room_no`,`time_slot_id`) values ('BI-356','1','Fall','2009','Watson',120,'C'),('CS-315','1','Spring','2010','Packard',101,'E'),('CS-315','2','Spring','2010','Taylor',3128,'A'),('CS-316','2','Spring','2010','Taylor',3128,'A'),('CS-347','1','Fall','2009','Painter',514,'B'),('FIN-201','1','Spring','2010','Painter',514,'C'),('HI-101','1','Fall','2009','Packard',101,'A'),('MU-199','1','Spring','2010','Watson',120,'D');
+insert  into `section`(`course_id`,`sec_id`,`semester`,`year`,`building`,`room_no`,`time_slot_id`) values ('BI-356','1','Fall','2009','Watson',120,'C'),('CS-315','1','Spring','2010','Packard',101,'E'),('CS-315','2','Fall','2000','Watson',120,'A'),('CS-316','2','Spring','2010','Taylor',3128,'A'),('CS-347','1','Fall','2009','Painter',514,'B'),('FIN-201','1','Spring','2010','Painter',514,'C'),('HI-101','1','Fall','2009','Packard',101,'A'),('MU-199','1','Spring','2010','Watson',120,'D'),('TEST','1','Fall','2020','Taylor',3128,'A'),('testid','1','Fall','2020','Taylor',3128,'A');
 
 /*Table structure for table `section_variable` */
 
@@ -129,26 +129,26 @@ CREATE TABLE `section_variable` (
 
 /*Data for the table `section_variable` */
 
-insert  into `section_variable`(`section_variable`) values (1);
+insert  into `section_variable`(`section_variable`) values (0);
 
 /*Table structure for table `student` */
 
 DROP TABLE IF EXISTS `student`;
 
 CREATE TABLE `student` (
-  `stuID` varchar(5) NOT NULL,
+  `sID` varchar(5) NOT NULL,
   `name` varchar(50) NOT NULL,
   `dept_name` varchar(50) NOT NULL,
-  `tot_cred` int DEFAULT NULL,
+  `tot_cred` int DEFAULT '0',
   `password` varchar(5) DEFAULT NULL,
-  PRIMARY KEY (`stuID`),
+  PRIMARY KEY (`sID`),
   KEY `dept_name` (`dept_name`),
   CONSTRAINT `student_ibfk_1` FOREIGN KEY (`dept_name`) REFERENCES `department` (`dept_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `student` */
 
-insert  into `student`(`stuID`,`name`,`dept_name`,`tot_cred`,`password`) values ('10236','Jackey','History',0,'111'),('11274','Dandy','Finance',0,'111'),('12138','Bella','Music',0,'111'),('12472','Lisa','Comp.Sci.',0,'111'),('29572','Deft','Physics',0,'111'),('39472','Rose','Physics',0,'111'),('56614','Crisp','Music',0,'111'),('68302','Jennie','Biology',0,'111');
+insert  into `student`(`sID`,`name`,`dept_name`,`tot_cred`,`password`) values ('10236','Jackey','History',6,'123'),('11274','Dandy','Finance',3,'111'),('12138','Bella','Music',0,'111'),('12472','Lisa','Comp.Sci.',0,'111'),('29572','Deft','Physics',0,'111'),('39472','Rose','Physics',0,'111'),('56614','Crisp','Music',0,'111'),('68302','Jennie','Biology',0,'111');
 
 /*Table structure for table `takes` */
 
@@ -160,13 +160,13 @@ CREATE TABLE `takes` (
   `sec_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `semester` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `year` int NOT NULL,
-  `grade` double DEFAULT NULL,
+  `grade` double DEFAULT '0',
   PRIMARY KEY (`sID`,`course_id`,`sec_id`,`semester`,`year`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `takes` */
 
-insert  into `takes`(`sID`,`course_id`,`sec_id`,`semester`,`year`,`grade`) values ('10236','BI-356','1','Fall',2009,60),('10236','HI-101','1','Fall',2009,60),('11274','BI-356','1','Fall',2009,50),('11274','CS-347','1','Fall',2009,50),('11274','FIN-201','1','Spring',2010,50),('11274','HI-101','1','Fall',2009,50),('11274','MU-199','1','Spring',2010,50),('56614','CS-315','2','Spring',2010,NULL),('56614','CS-347','1','Fall',2009,NULL),('68302','FIN-201','1','Spring',2010,NULL);
+insert  into `takes`(`sID`,`course_id`,`sec_id`,`semester`,`year`,`grade`) values ('10236','BI-356','1','Fall',2009,90),('10236','HI-101','1','Fall',2009,60),('11274','BI-356','1','Fall',2009,59),('11274','CS-347','1','Fall',2009,59),('11274','FIN-201','1','Spring',2010,59),('11274','HI-101','1','Fall',2009,60),('11274','MU-199','1','Spring',2010,59),('56614','CS-315','2','Spring',2010,0),('56614','CS-347','1','Fall',2009,0),('56614','HI-101','1','Fall',2009,0),('68302','FIN-201','1','Spring',2010,0);
 
 /*Table structure for table `teaches` */
 
@@ -183,7 +183,7 @@ CREATE TABLE `teaches` (
 
 /*Data for the table `teaches` */
 
-insert  into `teaches`(`tID`,`course_id`,`sec_id`,`semester`,`year`) values ('10101','CS-315','1','Spring',2010),('10101','CS-347','1','Fall',2009),('12121','FIN-201','1','Spring',2010),('15151','MU-199','1','Spring',2010),('22223','CS-315','2','Spring',2010),('58583','HI-101','1','Fall',2009),('83821','BI-356','1','Fall',2009);
+insert  into `teaches`(`tID`,`course_id`,`sec_id`,`semester`,`year`) values ('10101','CS-315','1','Spring',2010),('10101','CS-347','1','Fall',2009),('12121','FIN-201','1','Spring',2010),('15151','MU-199','1','Spring',2010),('22223','CS-315','2','Spring',2010),('83821','BI-356','1','Fall',2009),('83821','HI-101','1','Fall',2009);
 
 /*Table structure for table `time_slot` */
 
@@ -200,6 +200,50 @@ CREATE TABLE `time_slot` (
 /*Data for the table `time_slot` */
 
 insert  into `time_slot`(`time_slot_id`,`day`,`start_time`,`end_time`) values ('A','M','2020-03-08 08:00:00','2020-03-08 08:50:00'),('B','M','2020-03-08 09:00:00','2020-03-08 09:50:00'),('C','M','2020-03-08 11:00:00','2020-03-08 11:50:00'),('D','M','2020-03-08 13:00:00','2020-03-08 13:50:00'),('E','TU','2020-03-08 14:10:00','2020-03-08 15:00:00'),('F','TU','2020-03-08 15:10:00','2020-03-08 16:00:00'),('G','W','2020-03-08 16:10:00','2020-03-08 17:00:00'),('H','W','2020-03-08 18:10:00','2020-03-08 19:00:00');
+
+/* Trigger structure for table `takes` */
+
+DELIMITER $$
+
+/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `credits_earned` */$$
+
+/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `credits_earned` AFTER UPDATE ON `takes` FOR EACH ROW BEGIN
+	IF (NEW.grade > 59 AND NEW.grade IS NOT NULL 
+              AND (OLD.grade <60 OR OLD.grade IS NULL))
+       THEN
+	UPDATE student 
+	SET tot_cred = tot_cred +
+		(SELECT credits
+		FROM course
+		WHERE course.course_id = NEW.course_id)
+        WHERE student.`sID` = NEW.sID;
+	END IF;
+    END */$$
+
+
+DELIMITER ;
+
+/* Trigger structure for table `takes` */
+
+DELIMITER $$
+
+/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `credits_reduced` */$$
+
+/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `credits_reduced` AFTER UPDATE ON `takes` FOR EACH ROW BEGIN
+	IF (OLD.grade > 59 AND OLD.grade IS NOT NULL 
+              AND NEW.grade < 60)
+       THEN
+	UPDATE student 
+	SET tot_cred = tot_cred -
+		(SELECT credits
+		FROM course
+		WHERE course.course_id = NEW.course_id)
+        WHERE student.`sID` = NEW.sID;
+	END IF;
+    END */$$
+
+
+DELIMITER ;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

@@ -153,7 +153,7 @@
             <footer id="footer">
               <p class="copyright">Copyright &copy; 2020 四川大学
               <br>小组：第7组  
-			  <br>组长：吴沛颖 组员：黄美 何明锦 梁堉 刑国浩</p>
+			  <br>组长：吴沛颖 组员：黄美 何明锦 梁堉 邢国浩</p>
             </footer>
             
           </div>

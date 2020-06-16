@@ -32,6 +32,13 @@
         <div id="main">
           <div class="inner">
 
+            <!-- Header -->
+            <header id="header">
+              <div class="logo">
+                <a>管理课表</a>
+              </div>
+            </header>
+
             <!-- Page Heading -->
             <section class="main-banner">
               <div class="container-fluid">
@@ -42,14 +49,25 @@
                         <div class="col-md-12">
                           <div class="banner-caption">
                             <h4><em>管理课表</em> </h4><br>
+                            <div class="col-md-12">
                             <form action="studentOrTeacher" method="post">
- <p>ID ： <input type="text" name="ID"></p> <br>
- <p>身份 ： <br>
-            我是<input type="text" name="status"> (请输入'student'或者'teacher')<br>
-       <input type="submit" value="确定 ">
-       <div style="width:100%;text-align:center"></p></div>
-         
-</form>
+                          <fieldset>
+                            ID:<input type="text" name="ID">
+                          </fieldset>
+                        </div>
+							  <br>
+							   <div class="col-md-12">
+							  <h6>请选择身份：教师 <input type="checkbox" name="status" value="teacher">  学生 <input type="checkbox" name="status" value="student"></h6>
+                          
+                        </div>
+							 
+							  <br>
+							  <div class="col-md-12">
+                          <fieldset>
+                             <input type="submit" value="确定 ">
+                          </fieldset>
+                          </form>
+                        </div>
                            
                           </div>
                         </div>
@@ -80,7 +98,8 @@
                 <input type="text" name="search" id="search" placeholder="查找功能" />
               </form>
             </section>
-              
+			  
+             
             <!-- Menu -->
            <nav id="menu">
               <ul>
@@ -123,13 +142,14 @@
             <footer id="footer">
               <p class="copyright">Copyright &copy; 2020 四川大学
               <br>小组：第7组  
-			  <br>组长：吴沛颖 组员：黄美 何明锦 梁堉 刑国浩</p>
+			  <br>组长：吴沛颖 组员：黄美 何明锦 梁堉 邢国浩</p>
             </footer>
             
           </div>
         </div>
 
     </div>
+	
 
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->

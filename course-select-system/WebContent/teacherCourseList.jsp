@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*"%>
- 
+
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.util.*" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
 <html lang="en">
 
   <head>
@@ -38,7 +39,7 @@
             <!-- Header -->
             <header id="header">
               <div class="logo">
-                <a>选课</a>
+                <a>选课系统</a>
               </div>
             </header>
 
@@ -51,9 +52,9 @@
                       <div class="row">
                         <div class="col-md-12">
                           <div class="banner-caption">
-                            <h4><em>教师课表信息</em> </h4><br>
+                            <h4><em>开设课程详细信息</em> </h4><br>
                             <div class="col-md-12">
-                  
+                         <!-- 查询某一门课程名 -->
 
 
 <table align='center' border='1' cellspacing='0'>
@@ -77,8 +78,7 @@
             
         </tr>
     </c:forEach>
-</table>
-                        </div>
+</table>         </div>
                            
                           </div>
                         </div>
@@ -152,7 +152,7 @@
             <footer id="footer">
               <p class="copyright">Copyright &copy; 2020 四川大学
               <br>小组：第7组  
-			  <br>组长：吴沛颖 组员：黄美 何明锦 梁堉 刑国浩</p>
+			  <br>组长：吴沛颖 组员：黄美 何明锦 梁堉 邢国浩</p>
             </footer>
             
           </div>
@@ -177,8 +177,8 @@
 
 </html>
 
-
-<!-- <table align='center' border='1' cellspacing='0'>
+<!-- 
+<table align='center' border='1' cellspacing='0'>
 <br><br>
     <tr>
         <td>teacherID</td>
@@ -199,8 +199,4 @@
             
         </tr>
     </c:forEach>
-</table>
-
-
-<br><br><br>
-<div align='center'><a href="teacherWelcome.html">返回主界面</a></div> -->
+</table>-->

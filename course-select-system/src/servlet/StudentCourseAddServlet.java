@@ -21,7 +21,7 @@ public class StudentCourseAddServlet extends HttpServlet {
     			request.getParameter("course_id"), request.getParameter("sec_id"), 
     			request.getParameter("semester"), 
     			Integer.parseInt(request.getParameter("year")));
-//    	JOptionPane.showMessageDialog(null, "选课成功"); 
+   	JOptionPane.showMessageDialog(null, "选课成功"); 
         request.getRequestDispatcher("listStudentSection?name=student").forward(request, response);
  
     }

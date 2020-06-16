@@ -17,7 +17,7 @@ public class changePasswordDAO {
     	String sql = "update student set password=? where sID="+stuID;
     	//更新密码
     	PreparedStatement ps = conn.prepareStatement(sql);
-    	ps.setString(5,password);
+    	ps.setString(1,password);
     	ps.executeUpdate();
     	
     	ps.close();
@@ -36,7 +36,7 @@ public class changePasswordDAO {
 	    	String sql = "update instructor set password=? where tID="+teaID;
 	    	//更新密码
 	    	PreparedStatement ps = conn.prepareStatement(sql);
-	    	ps.setString(5,password);
+	    	ps.setString(1,password);
 	    	ps.executeUpdate();
 	    	
 	    	ps.close();
@@ -55,7 +55,7 @@ public class changePasswordDAO {
 	    	String sql = "update administrator set password=? where admID="+admID;
 	    	//更新密码
 	    	PreparedStatement ps = conn.prepareStatement(sql);
-	    	ps.setString(2,password);
+	    	ps.setString(1,password);
 	    	ps.executeUpdate();
 	    	
 	    	ps.close();

@@ -22,7 +22,7 @@ public class ScoreRegistrationServlet extends HttpServlet {
 			
 			if(grade>=0&&grade<=100) {
 				//更新教师录入的成绩,如果返回值为true说明更新成功
-				if(new gradeDAO().updateScore(request.getParameter("stuID"),grade)){
+				if(new gradeDAO().updateScore(request.getParameter("stuID"),request.getParameter("course_id"),grade)){
 					JOptionPane.showMessageDialog(null, "编辑成功!"); 
 				}else
 					JOptionPane.showMessageDialog(null, "编辑失败!"); 

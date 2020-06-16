@@ -600,7 +600,11 @@ section.forms .container-fluid {
     margin-bottom: 30px;
 }
 
-input[type="checkbox"],
+input[type="checkbox"]+ label:before{
+	content: '';
+	-webkit-appearance:checkbox;
+	border-radius: 0	
+}
 input[type="radio"] {
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -614,7 +618,11 @@ input[type="radio"] {
     z-index: -1;
 }
 
-input[type="checkbox"] + label,
+input[type="checkbox"] + label:before{
+	content: '';
+	-webkit-appearance:checkbox;
+	border-radius: 0	
+}
 input[type="radio"] + label {
     text-decoration: none;
     cursor: pointer;
@@ -633,7 +641,11 @@ input[type="radio"] + label {
     line-height: 22px;
 }
 
-input[type="checkbox"] + label:before,
+input[type="checkbox"] + label:before{
+	content: '';
+	-webkit-appearance:checkbox;
+	border-radius: 0	
+}
 input[type="radio"] + label:before {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
@@ -643,7 +655,11 @@ input[type="radio"] + label:before {
     text-transform: none !important;
 }
 
-input[type="checkbox"] + label:before,
+input[type="checkbox"] + label:before{
+	content: '';
+	-webkit-appearance:checkbox;
+	border-radius: 0
+}
 input[type="radio"] + label:before {
     border-radius: 0px;
     background-color: #fff;
@@ -659,12 +675,20 @@ input[type="radio"] + label:before {
     right: 10px;
 }
 
-.circle-item input[type="checkbox"] + label:before,
+.circle-item input[type="checkbox"] + label:before{
+	content: '';
+	-webkit-appearance:checkbox;
+	border-radius: 0
+}
 .circle-item input[type="radio"] + label:before {
     border-radius: 50%;
 }
 
-input[type="checkbox"]:checked + label:before,
+input[type="checkbox"]:checked + label:before{
+	content: '';
+	-webkit-appearance:checkbox;
+	border-radius: 0
+}
 input[type="radio"]:checked + label:before {
     content: '\f00c';
     background-color: #535ba0;
@@ -672,6 +696,8 @@ input[type="radio"]:checked + label:before {
 }
 
 input[type="checkbox"] + label:before {
+	content:'';
+	-webkit-appearance:checkbox;
     border-radius: 0;
 }
 

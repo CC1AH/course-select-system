@@ -90,7 +90,8 @@
 			<td>${takesItem.grade}</td>
 			<td>
 				<form action="scoreRegistration" id="form"  method="post" > 
-		 			<input type="text" name="stuID" value="${takesItem.ID}" style="display: none">  
+		 			<input type="text" name="stuID" value="${takesItem.ID}" style="display: none">
+		 			<input type="text" name="course_id" value="${takesItem.course_id}" style="display: none">  
 		 			<input required autofocus type="text" name="grade" placeholder="输入新成绩"  > 
 		 			<input type="submit"  value="确定修改"> 
 			 	</form> 
